@@ -1,6 +1,7 @@
 ﻿using Spryng.Models.Sms;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -57,7 +58,7 @@ namespace Spryng
                 { "Password", _password }
             });
 
-            return double.Parse(result);
+            return double.Parse(result, CultureInfo.GetCultureInfo("en-US"));
         }
 
         /// <summary>
@@ -72,6 +73,9 @@ namespace Spryng
 
         private async Task<string> executeHttpRequest(string relativePath, Dictionary<string, string> parameters)
         {
+            //var content = new FormUrlEncodedContent(parameters);
+            //content.
+
             var result = await _httpClient.PostAsync(relativePath, new FormUrlEncodedContent(parameters));
 
             return await result.Content.ReadAsStringAsync();
@@ -81,7 +85,7 @@ namespace Spryng
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(ApiEndpoint);
-            httpClient.DefaultRequestHeaders.Add("Content-Type", "application/x-www-form-urlencoded");
+            //httpClient.DefaultRequestHeaders.Add("Content-Type", "application/x-www-form-urlencoded");
 
             return httpClient;
         }
