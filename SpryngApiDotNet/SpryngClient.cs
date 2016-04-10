@@ -73,9 +73,6 @@ namespace Spryng
 
         private async Task<string> executeHttpRequest(string relativePath, Dictionary<string, string> parameters)
         {
-            //var content = new FormUrlEncodedContent(parameters);
-            //content.
-
             var result = await _httpClient.PostAsync(relativePath, new FormUrlEncodedContent(parameters));
 
             return await result.Content.ReadAsStringAsync();
@@ -85,7 +82,6 @@ namespace Spryng
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(ApiEndpoint);
-            //httpClient.DefaultRequestHeaders.Add("Content-Type", "application/x-www-form-urlencoded");
 
             return httpClient;
         }
