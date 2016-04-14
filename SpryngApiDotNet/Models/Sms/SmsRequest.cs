@@ -16,7 +16,7 @@ namespace Spryng.Models.Sms
         /// <summary>
         /// A list of at least 1 and a maximum of 1000 MSISDN-numeric destination numbers (international format without leading "00" or "+")
         /// </summary>
-        public long[] Destinations { get; set; }
+        public string[] Destinations { get; set; }
 
         /// <summary>
         /// A Numeric or Alphanumeric field that specifies the originator.
@@ -39,14 +39,22 @@ namespace Spryng.Models.Sms
         /// <summary>
         /// To select the Spryng Business, Spryng Economy or Specific User route.
         /// </summary>
+        /// <value>BUSINESS</value>
         public string Route { get; set; }
 
         /// <summary>
         /// If you wish to send Long SMS
         /// </summary>
         /// <remarks>
-        /// When using long sms the system will automatically devide your message into messages up to 153 characters per SMS
+        /// When using long sms the system will automatically devide your message into messages up to 153 characters per SMS.
         /// </remarks>
+        /// <value>False</value>
         public bool AllowLong { get; set; }
+
+        public SmsRequest()
+        {
+            AllowLong = false;
+            Route = SpryngRoute.BUSINESS;
+        }
     }
 }

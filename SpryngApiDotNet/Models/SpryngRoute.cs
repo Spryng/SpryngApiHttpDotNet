@@ -20,5 +20,21 @@ namespace Spryng.Models
         public static readonly string CUSTOM_7 = "7";
         public static readonly string CUSTOM_8 = "8";
         public static readonly string CUSTOM_9 = "9";
+
+        internal static string[] VALID_ROUTES = new[]
+        {
+            BUSINESS,
+            ECONOMY,
+            CUSTOM_0,
+            CUSTOM_1,
+            CUSTOM_2,
+            CUSTOM_3,
+            CUSTOM_4,
+            CUSTOM_5,
+            CUSTOM_6,
+            CUSTOM_7,
+            CUSTOM_8,
+            CUSTOM_9
+        };
     }
 }
