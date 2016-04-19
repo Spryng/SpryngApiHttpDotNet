@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SpryngApiDotNet")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("SpryngHttpApiDotNet")]
+[assembly: AssemblyDescription("Spryng Http Api .NET Library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SpryngApiDotNet")]
+[assembly: AssemblyCompany("Spryng")]
+[assembly: AssemblyProduct("SpryngHttpApiDotNet")]
 [assembly: AssemblyCopyright("Spryng ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
