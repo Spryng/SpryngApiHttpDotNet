@@ -3,12 +3,12 @@
   <metadata>
     <id>$id$</id>
     <version>$version$</version>
-    <title>$title$</title>
+    <title>Spryng HTTP Api</title>
     <authors>Spryng</authors>
     <owners>Spryng</owners>
     <projectUrl>https://github.com/Spryng/SpryngApiHttpDotNet</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Spryng HTTP Api Library</description>
+    <description>.NET Implementation of the Spryng HTTP Api.</description>
     <copyright>Copyright 2016</copyright>
   </metadata>
 </package>
