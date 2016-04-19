@@ -15,8 +15,8 @@ namespace SpryngApiDotNet.Example
             string username = GetInput("Username");
             string password = GetInput("Password", true);
 
-            // Create a new SpryngClient with the given Username and Password.
-            SpryngClient client = new SpryngClient(username, password);
+            // Create a new SpryngHttpClient with the given Username and Password.
+            SpryngHttpClient client = new SpryngHttpClient(username, password);
 
             // Get the amount of credits left in the account.
             Console.WriteLine("Available Credits: {0}", client.GetCreditAmount());
@@ -24,7 +24,7 @@ namespace SpryngApiDotNet.Example
             // Make a new SmsRequest 
             SmsRequest request = new SmsRequest()
             {
-                Destinations = new string[] { GetInput("Phone Number") },
+                Destinations = new string[] { "31610831401", "31681338412" },
                 Sender = GetInput("Sender"),
                 Body = GetInput("Body")
             };

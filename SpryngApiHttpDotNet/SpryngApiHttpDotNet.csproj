@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0742804D-FAC5-4834-B470-3FC84C653FD9}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{678F2F8B-1255-4B87-B170-B35BBE5B2D4A}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SpryngApiDotNet.Example</RootNamespace>
-    <AssemblyName>SpryngApiDotNet.Example</AssemblyName>
+    <RootNamespace>Spryng</RootNamespace>
+    <AssemblyName>SpryngApiHttpDotNet</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,18 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="SpryngHttpClient.cs" />
+    <Compile Include="Models\Sms\SmsRequest.cs" />
+    <Compile Include="Models\SpryngRoute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpryngHttpClientException.cs" />
+    <Compile Include="Utilities.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SpryngApiDotNet\SpryngApiDotNet.csproj">
-      <Project>{678f2f8b-1255-4b87-b170-b35bbe5b2d4a}</Project>
-      <Name>SpryngApiDotNet</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

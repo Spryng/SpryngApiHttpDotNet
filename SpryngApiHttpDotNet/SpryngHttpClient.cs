@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Spryng
 {
-    public class SpryngClient
+    public class SpryngHttpClient
     {
         private static readonly string ApiEndpoint = "https://www.spryng.nl";
         private static readonly string ApiEndpointCheck = "/check.php";
@@ -22,12 +22,12 @@ namespace Spryng
         private readonly HttpClient _httpClient;
 
         /// <summary>
-        /// Create a new instance of the <see cref="SpryngClient"/>.
+        /// Create a new instance of the <see cref="SpryngHttpClient"/>.
         /// </summary>
         /// <param name="username">Chosen by user when signing up.</param>
         /// <param name="password">Chosen by user when signing up.</param>
         /// <exception cref="ArgumentException">An <see cref="ArgumentException"/> if the <paramref name="username"/> or <paramref name="password"/> are invalid.</exception>
-        public SpryngClient(string username, string password)
+        public SpryngHttpClient(string username, string password)
         {
             if (string.IsNullOrEmpty(username) || username.Length < 2 || username.Length > 32)
                 throw new ArgumentException("Username must be between 2 and 32 characters.");
@@ -45,7 +45,7 @@ namespace Spryng
         /// </summary>
         /// <param name="request">The <see cref="SmsRequest"/> to execute.</param>
         /// <exception cref="ArgumentException"></exception>
-        /// <exception cref="SpryngClientException"></exception>
+        /// <exception cref="SpryngHttpClientException"></exception>
         public void ExecuteSmsRequest(SmsRequest request)
         {
             try
@@ -64,7 +64,7 @@ namespace Spryng
         /// </summary>
         /// <param name="request">The <see cref="SmsRequest"/> to execute.</param>
         /// <exception cref="ArgumentException"></exception>
-        /// <exception cref="SpryngClientException"></exception>
+        /// <exception cref="SpryngHttpClientException"></exception>
         public async Task ExecuteSmsRequestAsync(SmsRequest request)
         {
             // Set the predefined data for the SMS Send request.
@@ -127,14 +127,14 @@ namespace Spryng
 
             // Something went wrong with the request throw a SpryngClientException.
             if (resultInt != 1)
-                throw new SpryngClientException(resultInt);
+                throw new SpryngHttpClientException(resultInt);
         }
 
         /// <summary>
         /// Checks the Credit amount of the currently authenticated user asynchronously.
         /// </summary>
         /// <returns>The amount of Spryng credits left.</returns>
-        /// <exception cref="SpryngClientException"></exception>
+        /// <exception cref="SpryngHttpClientException"></exception>
         public async Task<double> GetCreditAmountAsync()
         {
             var result = await executeHttpRequest(ApiEndpointCheck, new Dictionary<string, string>()
@@ -146,7 +146,7 @@ namespace Spryng
             double credits = double.Parse(result, CultureInfo.GetCultureInfo("en-US"));
 
             if (credits == -1)
-                throw new SpryngClientException(-1);
+                throw new SpryngHttpClientException(-1);
 
             return credits;
         }
@@ -155,7 +155,7 @@ namespace Spryng
         /// Checks the Credit amount of the currently authenticated user.
         /// </summary>
         /// <returns>The amount of Spryng credits left.</returns>
-        /// <exception cref="SpryngClientException"></exception>
+        /// <exception cref="SpryngHttpClientException"></exception>
         public double GetCreditAmount()
         {
             try

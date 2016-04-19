@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpryngApiDotNet", "SpryngApiDotNet\SpryngApiDotNet.csproj", "{678F2F8B-1255-4B87-B170-B35BBE5B2D4A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpryngApiHttpDotNet", "SpryngApiHttpDotNet\SpryngApiHttpDotNet.csproj", "{678F2F8B-1255-4B87-B170-B35BBE5B2D4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpryngApiDotNet.Example", "SpryngApiDotNet.Example\SpryngApiDotNet.Example.csproj", "{0742804D-FAC5-4834-B470-3FC84C653FD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpryngApiHttpDotNet.Example", "SpryngApiHttpDotNet.Example\SpryngApiHttpDotNet.Example.csproj", "{0742804D-FAC5-4834-B470-3FC84C653FD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

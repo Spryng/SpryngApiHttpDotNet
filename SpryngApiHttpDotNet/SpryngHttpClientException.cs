@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Spryng
 {
-    public class SpryngClientException : Exception
+    public class SpryngHttpClientException : Exception
     {
         public int Code { get; private set; }
 
-        public SpryngClientException(int code)
+        public SpryngHttpClientException(int code)
         {
             Code = code;
         }
