@@ -97,10 +97,6 @@ namespace Spryng
             if (!string.IsNullOrEmpty(request.Service))
                 requestData.Add("SERVICE", request.Service);
 
-            // Validate Routes
-            if (!SpryngRoute.VALID_ROUTES.Contains(request.Route))
-                throw new ArgumentException("The client you're trying to use does not exist.");
-
             requestData.Add("ROUTE", request.Route);
 
             // Validate AllowLong and Body length.
