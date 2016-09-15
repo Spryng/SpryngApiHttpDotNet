@@ -114,6 +114,9 @@ namespace Spryng
             requestData.Add("ALLOWLONG", request.AllowLong ? "1" : "0");
             requestData.Add("BODY", request.Body);
 
+            if (!string.IsNullOrEmpty(request.Reference))
+                requestData.Add("REFERENCE", request.Reference);
+
 
             // Make HTTP Request to Spryng API and Parse the result.
 
