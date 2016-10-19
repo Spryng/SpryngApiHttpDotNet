@@ -13,7 +13,7 @@ namespace Spryng
 {
     public class SpryngHttpClient
     {
-        private static readonly string ApiEndpoint = "https://www.spryng.nl";
+        private static readonly string ApiEndpoint = "https://api.spryngsms.com/api";
         private static readonly string ApiEndpointCheck = "/check.php";
         private static readonly string ApiEndpointSend = "/send.php";
 
