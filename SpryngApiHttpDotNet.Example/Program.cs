@@ -24,7 +24,7 @@ namespace SpryngApiDotNet.Example
             // Make a new SmsRequest 
             SmsRequest request = new SmsRequest()
             {
-                Destinations = new string[] { "31610831401", "31681338412" },
+                Destinations = new string[] { "31612345678", "31698765432" },
                 Sender = GetInput("Sender"),
                 Body = GetInput("Body")
             };
