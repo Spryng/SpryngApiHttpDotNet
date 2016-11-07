@@ -168,10 +168,15 @@ namespace Spryng
             }
         }
 
-
         private async Task<string> executeHttpRequest(string relativePath, Dictionary<string, string> parameters)
         {
-            var result = await _httpClient.PostAsync(relativePath, new FormUrlEncodedContent(parameters));
+            // Create the post data string using our custom URL Encoding so we can properly send special characters.
+            var postData = string.Join("&", parameters.Select(kvp => $"{kvp.Key}={Utilities.CustomUrlEncode(kvp.Value)}"));
+
+            // Create the String Content, set it to the Encoding used by the service and make sure we send as a form.
+            var stringContent = new StringContent(postData, Encoding.GetEncoding("ISO-8859-1"), "application/x-www-form-urlencoded");
+
+            var result = await _httpClient.PostAsync(relativePath, stringContent);
 
             return await result.Content.ReadAsStringAsync();
         }
