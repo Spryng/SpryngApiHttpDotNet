@@ -77,7 +77,7 @@ namespace Spryng
 
             // Validate Destinations field
             if (request.Destinations == null || !request.Destinations.Any() || request.Destinations.Count() > 100)
-                throw new ArgumentException("Atleast 1 destination number required and more than 1000.");
+                throw new ArgumentException("Atleast 1 destination number required and no more than 1000.");
             if (request.Destinations.Any(n => !Utilities.IsMsidnCompliant(n)))
                 throw new ArgumentException("One of the Destination numbers is not MSIDN-numeric Compliant.");
 
@@ -87,9 +87,9 @@ namespace Spryng
             if (string.IsNullOrEmpty(request.Sender))
                 throw new ArgumentException("Sender field is required.");
             if (Utilities.IsDigitsOnly(request.Sender) && request.Sender.Length > 14)
-                throw new ArgumentException("Numeric senders can not be longer than 14 characters long.");
-            if (Utilities.IsDigitsOnly(request.Sender) && request.Sender.Length > 11)
-                throw new ArgumentException("Alphanumeric senders can not be longer than 11 characters long.");
+                throw new ArgumentException("Numeric senders can not be longer than 14 characters.");
+            if (!Utilities.IsDigitsOnly(request.Sender) && request.Sender.Length > 11)
+                throw new ArgumentException("Alphanumeric senders can not be longer than 11 characters.");
 
             requestData.Add("SENDER", request.Sender);
 
