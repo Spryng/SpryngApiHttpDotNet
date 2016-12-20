@@ -184,7 +184,7 @@ namespace Spryng
 
         private HttpClient createHttpClient(HttpMessageHandler handler)
         {
-            HttpClient httpClient = new HttpClient();
+            HttpClient httpClient = new HttpClient(handler);
             httpClient.BaseAddress = new Uri(ApiEndpoint);
 
             return httpClient;
