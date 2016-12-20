@@ -26,8 +26,9 @@ namespace Spryng
         /// </summary>
         /// <param name="username">Chosen by user when signing up.</param>
         /// <param name="password">Chosen by user when signing up.</param>
+        /// <param name="httpMessageHandler">The HTTP handler stack to use for sending requests.</param>
         /// <exception cref="ArgumentException">An <see cref="ArgumentException"/> if the <paramref name="username"/> or <paramref name="password"/> are invalid.</exception>
-        public SpryngHttpClient(string username, string password)
+        public SpryngHttpClient(string username, string password, HttpMessageHandler httpMessageHandler = null)
         {
             if (string.IsNullOrEmpty(username) || username.Length < 2 || username.Length > 32)
                 throw new ArgumentException("Username must be between 2 and 32 characters.");
@@ -36,7 +37,7 @@ namespace Spryng
 
             _username = username;
             _password = password;
-            _httpClient = createHttpClient();
+            _httpClient = createHttpClient(httpMessageHandler);
         }
 
 
@@ -181,7 +182,7 @@ namespace Spryng
             return await result.Content.ReadAsStringAsync();
         }
 
-        private HttpClient createHttpClient()
+        private HttpClient createHttpClient(HttpMessageHandler handler)
         {
             HttpClient httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(ApiEndpoint);
