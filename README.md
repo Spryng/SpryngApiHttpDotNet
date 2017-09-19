@@ -14,8 +14,10 @@ Install-Package SpryngApiHttpDotNet
 To use the Spryng HTTP Api you must first create a new instance of the `SpryngHttpClient`:
 
 ```C#
-SpryngHttpClient client = new SpryngHttpClient(username, password);
+var client = pryngHttpClient.CreateClientWithPassword(username, password);
 ```
+
+For sending SMS it is also possible to use an api key. Checking of credits does not work.
 
 
 ## Sending a SMS
@@ -37,7 +39,7 @@ You can now send the SMS using the client:
 ```C#
 try
 {
-    client.ExecuteSmsRequest(request);
+    await client.ExecuteSmsRequestAsync(request);
     Console.WriteLine("SMS has been send!");
 }
 catch (SpryngHttpClientException ex)
@@ -46,10 +48,10 @@ catch (SpryngHttpClientException ex)
 }
 ```
 
-The API also provides an Async implementation which can be used in the same fashion as the synchronous api:
+The API also provides an sync implementation which can be used in the same fashion as the asynchronous api:
 
 ```C#
-await client.ExecuteSmsRequestAsync(request);
+client.ExecuteSmsRequest(request);
 ```
 
 #### SmsRequest Options
@@ -74,3 +76,5 @@ double remainingCredits = client.GetCreditAmount();
 // Asynchronous
 double remainingCredits = await client.GetCreditAmountAsync();
 ```
+
+When using the API Key it is not possible to get your credit amount.

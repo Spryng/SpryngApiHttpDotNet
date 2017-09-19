@@ -43,13 +43,25 @@ namespace Spryng.Models.Sms
         public string Route { get; set; }
 
         /// <summary>
-        /// If you wish to send Long SMS
+        /// If you wish to send Long SMS.
+        /// <para>When using long sms the system will automatically devide your message into messages up to 153 characters per SMS.</para>
         /// </summary>
-        /// <remarks>
-        /// When using long sms the system will automatically devide your message into messages up to 153 characters per SMS.
-        /// </remarks>
         /// <value>False</value>
         public bool AllowLong { get; set; }
+
+        /// <summary>
+        /// If you wish to use Unicode in SMS. This will double the used characters per SMS.
+        /// <para>Unicode support needs to be enabled by Spryng Support for the route.</para>
+        /// </summary>
+        /// <value>False</value>
+        public bool EnableUnicode { get; set; }
+
+        /// <summary>
+        /// If you wish to use characters like the Euro sign.
+        /// <para>Raw Encoding support needs to be enabled by Spryng Support for the route.</para>
+        /// </summary>
+        /// <value>False</value>
+        public bool EnableRawEncoding { get; set; }
 
         public SmsRequest()
         {
