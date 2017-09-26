@@ -167,17 +167,17 @@ namespace Spryng
                     throw new ArgumentException("Body can't be longer than 160 without enabling 'ALLOWLONG'.");
             }
 
-            if (request.EnableUnicode)
-                requestData.Add("UNICODE", "1");
-            if (request.EnableRawEncoding)
-                requestData.Add("RAWENCODING", "1");
-
-            requestData.Add("ALLOWLONG", request.AllowLong ? "1" : "0");
             requestData.Add("BODY", request.Body);
 
             if (!string.IsNullOrEmpty(request.Reference))
                 requestData.Add("REFERENCE", request.Reference);
 
+            if (request.EnableRawEncoding || request.EnableUnicode)
+                requestData.Add("RAWENCODING", "1");
+            if (request.EnableUnicode)
+                requestData.Add("UNICODE", "1");
+
+            requestData.Add("ALLOWLONG", request.AllowLong ? "1" : "0");
 
             // Make HTTP Request to Spryng API and Parse the result.
 
@@ -258,8 +258,13 @@ namespace Spryng
             // Create the post data string using our custom URL Encoding so we can properly send special characters.
             var postData = string.Join("&", parameters.Select(kvp => $"{kvp.Key}={Utilities.CustomUrlEncode(kvp.Value)}"));
 
+            // Use the proper encoding type depending if RAWENCODING is enabled.
+            var requestEncoding = Encoding.GetEncoding("ISO-8859-1");
+            if (parameters.ContainsKey("RAWENCODING"))
+                requestEncoding = Encoding.UTF8;
+
             // Create the String Content, set it to the Encoding used by the service and make sure we send as a form.
-            var stringContent = new StringContent(postData, Encoding.GetEncoding("ISO-8859-1"), "application/x-www-form-urlencoded");
+            var stringContent = new StringContent(postData, requestEncoding, "application/x-www-form-urlencoded");
 
             var result = await _httpClient.PostAsync(relativePath, stringContent).ConfigureAwait(false);
 
