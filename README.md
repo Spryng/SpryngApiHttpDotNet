@@ -14,7 +14,7 @@ Install-Package SpryngApiHttpDotNet
 To use the Spryng HTTP Api you must first create a new instance of the `SpryngHttpClient`:
 
 ```C#
-var client = pryngHttpClient.CreateClientWithPassword(username, password);
+var client = SpryngHttpClient.CreateClientWithPassword(username, password);
 ```
 
 For sending SMS it is also possible to use an api key. Checking of credits does not work.
